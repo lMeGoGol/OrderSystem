@@ -5,5 +5,4 @@ module order.model {
 
     requires static lombok;
     requires javafaker;
-    requires java.sql;
 }
