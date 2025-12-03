@@ -12,8 +12,12 @@ public class OrderRepository {
         storage.put(product.getId(), product);
     }
 
-    public Order<?> findProductById(String id) {
-        return  storage.get(id);
+    public Order<?> findProductById(final String id) {
+        final var order = storage.get(id);
+        if (order == null) {
+            throw new OrderNotFoundException(id);
+        }
+        return order;
     }
 
     public Collection<Order<?>> findAllProducts() {
